@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args){
-        Display display = new Display(800, 600, "Kobiware Rendering Engine V0.1");
+        Display display = new Display(800, 600, "KobiWare Rendering Engine V0.1");
         RenderContext target = display.GetFrameBuffer();
         Stars3D stars = new Stars3D(4, 64.0f, 20.0f);
 

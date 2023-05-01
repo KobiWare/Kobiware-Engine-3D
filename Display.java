@@ -6,7 +6,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.DataBufferByte;
 import javax.swing.*;
 
-public class Display extends Canvas {
+public class Display extends Canvas{
     private final JFrame frame;
     private final BufferedImage displayImage;
     private final RenderContext frameBuffer;
@@ -14,6 +14,7 @@ public class Display extends Canvas {
     public final BufferStrategy bufferStrategy;
     private final Graphics graphics;
     public RenderContext GetFrameBuffer() { return frameBuffer; }
+
 
     public Display(int width, int height, String title){
         Dimension size = new Dimension(width, height);
@@ -35,12 +36,12 @@ public class Display extends Canvas {
         frame.setLocationRelativeTo(null); //set frame in center of screen
         frame.setTitle(title);
         frame.setVisible(true);
+        frame.setSize(800, 600);
 
         createBufferStrategy(1);
         bufferStrategy = getBufferStrategy();
         graphics = bufferStrategy.getDrawGraphics();
     }
-
     public void SwapBuffers() {
         frameBuffer.CopyToByteArray(displayComponents); //copy the bit map into display components
         graphics.drawImage(displayImage, 0, 0, frameBuffer.GetWidth(), frameBuffer.GetHeight(), null);
