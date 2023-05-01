@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Main {
     public static void main(String[] args){
         Display display = new Display(800, 600, "KobiWare Rendering Engine V0.1");
@@ -12,9 +14,9 @@ public class Main {
 
         float rotCounter = 0.0f;
         long previousTime = System.nanoTime();
-        while(true){
+        while(true) {
             long currentTime = System.nanoTime();
-            float delta = (float)((currentTime - previousTime)/1000000000.0);
+            float delta = (float) ((currentTime - previousTime) / 1000000000.0);
             previousTime = currentTime;
 
             //stars.UpdateAndRender(target, delta);
@@ -24,7 +26,7 @@ public class Main {
             Matrix4f rotation = new Matrix4f().InitRotation(0.0f, rotCounter, 0.0f);
             Matrix4f transform = projection.Mul(translation.Mul(rotation));
 
-            target.Clear((byte)0x00);
+            target.Clear((byte) 0x00);
             target.FillTriangle(maxYVert.Transform(transform),
                     midYVert.Transform(transform), minYVert.Transform(transform));
 

@@ -21,7 +21,7 @@ public class Vertex {
 
     public float TriangleAreaTimesTwo(Vertex b, Vertex c) //technically gets the area of a square, too lazy to fix because breaks rendering code
     {//editing this to be the area of a triangle WILL break code, do not change
-        //rendering does not even need area anyways
+        //rendering does not even need area anyway
         float x1 = b.GetX() - _pos.GetX();
         float y1 = b.GetY() - _pos.GetY();
 
