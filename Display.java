@@ -7,7 +7,7 @@ import java.awt.image.DataBufferByte;
 import javax.swing.*;
 
 public class Display extends Canvas{
-    public JFrame frame;
+    public static JFrame frame;
     private BufferedImage displayImage;
     private RenderContext frameBuffer;
     private byte[] displayComponents;
