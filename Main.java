@@ -13,7 +13,7 @@ public class Main {
         long previousTime = System.nanoTime();
         while(true) {
             try{
-                Vertex minYVert = new Vertex(-1/0, -1, 0);
+                Vertex minYVert = new Vertex(-1, -1, 0);
                 Vertex midYVert = new Vertex(0, 1, 0);
                 Vertex maxYVert = new Vertex(1, -1, 0);
                 long currentTime = System.nanoTime();
