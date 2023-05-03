@@ -33,8 +33,9 @@ public class Main {
 
                 display.SwapBuffers();
             }catch(Exception e){
-                JOptionPane.showMessageDialog(Display.frame, "You got an error, idiot");
-                break;
+                JOptionPane.showMessageDialog(Display.frame, "An error has occurred within starting the KobiWare Engine.\nLine " +e.getStackTrace()[0].getLineNumber() + ": " + e);
+                System.out.println("An error has occurred within starting the KobiWare Engine at line " + e.getStackTrace()[0].getLineNumber() + ", " + e);
+                System.exit(0);
             }
         }
     }
