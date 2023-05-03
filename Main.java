@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
@@ -13,9 +12,9 @@ public class Main {
         long previousTime = System.nanoTime();
         while(true) {
             try{
-                Vertex minYVert = new Vertex(-1, -1, 0);
+                Vertex minYVert = new Vertex(-1, -1, 1);
                 Vertex midYVert = new Vertex(0, 1, 0);
-                Vertex maxYVert = new Vertex(1, -1, 0);
+                Vertex maxYVert = new Vertex(1, -1, 1);
                 long currentTime = System.nanoTime();
                 float delta = (float) ((currentTime - previousTime) / 1000000000.0);
                 previousTime = currentTime;
@@ -31,9 +30,31 @@ public class Main {
                 target.FillTriangle(maxYVert.Transform(transform),
                         midYVert.Transform(transform), minYVert.Transform(transform));
 
+                minYVert = new Vertex(-1, -1, -1);
+                midYVert = new Vertex(0, 1, 0);
+                maxYVert = new Vertex(1, -1, -1);
+
+                target.FillTriangle(maxYVert.Transform(transform),
+                        midYVert.Transform(transform), minYVert.Transform(transform));
+
+                minYVert = new Vertex(-1, -1, -1);
+                midYVert = new Vertex(0, 1, 0);
+                maxYVert = new Vertex(-1, -1, 1);
+
+                target.FillTriangle(maxYVert.Transform(transform),
+                        midYVert.Transform(transform), minYVert.Transform(transform));
+
+                minYVert = new Vertex(1, -1, -1);
+                midYVert = new Vertex(0, 1, 0);
+                maxYVert = new Vertex(1, -1, 1);
+
+                target.FillTriangle(maxYVert.Transform(transform),
+                        midYVert.Transform(transform), minYVert.Transform(transform));
+
                 display.SwapBuffers();
+
             }catch(Exception e){
-                JOptionPane.showMessageDialog(Display.frame, "An error has occurred within starting the KobiWare Engine.\nLine " +e.getStackTrace()[0].getLineNumber() + ": " + e);
+                JOptionPane.showMessageDialog(null,"An error has occurred within starting the KobiWare Engine.\nLine " +e.getStackTrace()[0].getLineNumber() + ": " + e);
                 System.out.println("An error has occurred within starting the KobiWare Engine at line " + e.getStackTrace()[0].getLineNumber() + ", " + e);
                 System.exit(0);
             }
