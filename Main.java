@@ -54,8 +54,8 @@ public class Main {
                 display.SwapBuffers();
 
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"An error has occurred within starting the KobiWare Engine.\nLine " +e.getStackTrace()[0].getLineNumber() + ": " + e);
-                System.out.println("An error has occurred within starting the KobiWare Engine at line " + e.getStackTrace()[0].getLineNumber() + ", " + e);
+                JOptionPane.showMessageDialog(null,"An error has occurred within the KobiWare Engine.\nLine " +e.getStackTrace()[0].getLineNumber() + ": " + e);
+                System.out.println("An error has occurred within the KobiWare Engine at line " + e.getStackTrace()[0].getLineNumber() + ", " + e);
                 System.exit(0);
             }
         }
