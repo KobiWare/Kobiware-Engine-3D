@@ -43,7 +43,9 @@ public class Display extends Canvas{
             bufferStrategy = getBufferStrategy();
             graphics = bufferStrategy.getDrawGraphics();
         }catch (Exception e){
-            JOptionPane.showMessageDialog(frame, "You got an error, idiot");
+            JOptionPane.showMessageDialog(Display.frame, "An error has occurred within starting the KobiWare Engine.\nLine " +e.getStackTrace()[0].getLineNumber() + ": " + e);
+            System.out.println("An error has occurred within starting the KobiWare Engine at line " + e.getStackTrace()[0].getLineNumber() + ", " + e);
+            System.exit(0);
         }
     }
     public void SwapBuffers() {
