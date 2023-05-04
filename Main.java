@@ -12,9 +12,9 @@ public class Main {
         long previousTime = System.nanoTime();
         while(true) {
             try{
-                Vertex minYVert = new Vertex(-1, -1, 1);
+                Vertex minYVert = new Vertex(-1, -1, 0);
                 Vertex midYVert = new Vertex(0, 1, 0);
-                Vertex maxYVert = new Vertex(1, -1, 1);
+                Vertex maxYVert = new Vertex(1, -1, 0);
                 long currentTime = System.nanoTime();
                 float delta = (float) ((currentTime - previousTime) / 1000000000.0);
                 previousTime = currentTime;
@@ -27,27 +27,6 @@ public class Main {
                 Matrix4f transform = projection.Mul(translation.Mul(rotation));
 
                 target.Clear((byte) 0x00);
-                target.FillTriangle(maxYVert.Transform(transform),
-                        midYVert.Transform(transform), minYVert.Transform(transform));
-
-                minYVert = new Vertex(-1, -1, -1);
-                midYVert = new Vertex(0, 1, 0);
-                maxYVert = new Vertex(1, -1, -1);
-
-                target.FillTriangle(maxYVert.Transform(transform),
-                        midYVert.Transform(transform), minYVert.Transform(transform));
-
-                minYVert = new Vertex(-1, -1, -1);
-                midYVert = new Vertex(0, 1, 0);
-                maxYVert = new Vertex(-1, -1, 1);
-
-                target.FillTriangle(maxYVert.Transform(transform),
-                        midYVert.Transform(transform), minYVert.Transform(transform));
-
-                minYVert = new Vertex(1, -1, -1);
-                midYVert = new Vertex(0, 1, 0);
-                maxYVert = new Vertex(1, -1, 1);
-
                 target.FillTriangle(maxYVert.Transform(transform),
                         midYVert.Transform(transform), minYVert.Transform(transform));
 
