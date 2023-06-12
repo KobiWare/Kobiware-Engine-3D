@@ -47,7 +47,7 @@ public class RenderContext extends Bitmap{
         int yStart = topToMiddle.GetYStart();
         int yEnd = topToMiddle.GetYEnd();
         for(int j = yStart; j < yEnd; j++){
-            DrawScanLine(left, right, j);
+            DrawScanLine(gradients, left, right, j);
             left.Step();
             right.Step();
         }
@@ -63,17 +63,18 @@ public class RenderContext extends Bitmap{
         yStart = middleToBottom.GetYStart();
         yEnd = middleToBottom.GetYEnd();
         for(int j = yStart; j < yEnd; j++){
-            DrawScanLine(left, right, j);
+            DrawScanLine(gradients, left, right, j);
             left.Step();
             right.Step();
         }
     }
 
-    private void DrawScanLine(Edge left, Edge right, int j){
+    private void DrawScanLine(Gradients gradients, Edge left, Edge right, int j){
         int xMin = (int)Math.ceil(left.GetX());
         int xMax = (int)Math.ceil(right.GetX());
-        Vector4f minColor = left.GetColor();
-        Vector4f maxColor = right.GetColor();
+        float xPrestep = xMin - left.GetX();
+        Vector4f minColor = left.GetColor().Add(gradients.GetColorXStep().Mul(xPrestep));
+        Vector4f maxColor = right.GetColor().Add(gradients.GetColorXStep().Mul(xPrestep));
 
         float lerpAmt = 0.0f;
         float lerpStep = 1.0f/(float)(xMax-xMin);
