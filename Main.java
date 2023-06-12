@@ -12,14 +12,12 @@ public class Main {
         long previousTime = System.nanoTime();
         while(true) {
             try{
-                Vertex minYVert = new Vertex(-1, -1, 0);
-                Vertex midYVert = new Vertex(0, 1, 0);
-                Vertex maxYVert = new Vertex(1, -1, 0);
+                Vertex minYVert = new Vertex(new Vector4f(-1, -1, 0, 1), new Vector4f(1.0f, 0.0f, 0.0f, 0.0f));
+                Vertex midYVert = new Vertex(new Vector4f(0, 1, 0, 1), new Vector4f(0.0f, 1.0f, 0.0f, 0.0f));
+                Vertex maxYVert = new Vertex(new Vector4f(1, -1, 0, 1), new Vector4f(0.0f, 0.0f, 1.0f, 0.0f));
                 long currentTime = System.nanoTime();
                 float delta = (float) ((currentTime - previousTime) / 1000000000.0);
                 previousTime = currentTime;
-
-                //stars.UpdateAndRender(target, delta);
 
                 rotCounter += delta;
                 Matrix4f translation = new Matrix4f().InitTranslation(0.0f, 0.0f, 3.0f);

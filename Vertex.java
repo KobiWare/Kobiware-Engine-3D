@@ -1,5 +1,8 @@
+import java.util.Vector;
+
 public class Vertex {
     private Vector4f _pos;
+    private Vector4f _color;
     public float GetX() {return _pos.GetX();} //get the X value of a vertex
     public float GetY() {return _pos.GetY();} //get the Y value of a vertex
 
@@ -8,15 +11,18 @@ public class Vertex {
     } //make a "Vertex" of the XY value of point, Z value is the hypothetical depth
 
     public Vertex Transform(Matrix4f transform){
-        return new Vertex(transform.Transform(_pos));
+        return new Vertex(transform.Transform(_pos), _color);
     }
 
     public Vertex PerspectiveDivide() {
-        return new Vertex(new Vector4f(_pos.GetX()/_pos.GetW(), _pos.GetY()/_pos.GetW(), _pos.GetZ()/_pos.GetW(), _pos.GetW())); //divide each point by this hypothetical third dimension to give a 3D look to the image
+        return new Vertex(new Vector4f(_pos.GetX()/_pos.GetW(), _pos.GetY()/_pos.GetW(), _pos.GetZ()/_pos.GetW(), _pos.GetW()), _color); //divide each point by this hypothetical third dimension to give a 3D look to the image
     }
 
-    public Vertex(Vector4f pos){
+    public Vector4f GetColor() {return _color;}
+
+    public Vertex(Vector4f pos, Vector4f color){
         _pos = pos;
+        _color = color;
     }
 
     public float TriangleAreaTimesTwo(Vertex b, Vertex c) //technically gets the area of a square, too lazy to fix because breaks rendering code
